@@ -37,6 +37,20 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
+    # Soporte Geoespacial (PostGIS)
+    'django.contrib.gis',
+
+    # Librerías de terceros
+    'rest_framework',
+    'channels',
+
+    # Apps del proyecto FlotaAgil
+    'apps.autenticacion',
+    'apps.reservas',
+    'apps.flota',
+    'apps.convenios',
+    'apps.cobros',
 ]
 
 MIDDLEWARE = [
@@ -74,8 +88,12 @@ WSGI_APPLICATION = 'flota_agil.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
+        'NAME': 'flotaagil_db',
+        'USER': 'postgres',
+        'PASSWORD': 'Agus@2503', 
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 

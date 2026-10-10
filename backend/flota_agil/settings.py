@@ -12,6 +12,16 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 from pathlib import Path
 
+import os
+
+# Configuración de rutas para librerías espaciales (GDAL/GEOS) en Windows para Python 3.8+
+if os.name == 'nt':
+    os.add_dll_directory(r"C:\Program Files\PostgreSQL\16\bin")
+    
+    # Rutas explícitas hacia las librerías binarias
+    GEOS_LIBRARY_PATH = r"C:\Program Files\PostgreSQL\16\bin\libgeos_c.dll"
+    GDAL_LIBRARY_PATH = r"C:\Program Files\PostgreSQL\16\bin\libgdal-34.dll"
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
